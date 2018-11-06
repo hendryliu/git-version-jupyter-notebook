@@ -1,0 +1,68 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.6.6
+---
+
+```{python}
+import pandas_datareader.data as web
+import pyfolio as pf
+import pandas as pd
+# %matplotlib inline
+from quandl_key import api_key
+```
+
+```{python}
+symbol = "WIKI/FB"
+df = web.DataReader(symbol, "quandl", "2015-01-01", "2017-08-22", access_key= api_key)
+```
+
+```{python}
+df.loc['2015-02-01':'2015-01-01']
+```
+
+```{python}
+df.info()
+```
+
+```{python}
+stock_rets = df["AdjClose"].sort_index().diff()
+```
+
+```{python}
+rate_stock_rets = df["AdjClose"].sort_index().pct_change()
+```
+
+```{python}
+stock_rets
+```
+
+```{python}
+pf.create_returns_tear_sheet(rate_stock_rets, live_start_date='2015-01-02')
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
