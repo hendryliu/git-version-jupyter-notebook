@@ -28,6 +28,7 @@ import pyfolio as pf
 import pandas as pd
 # %matplotlib inline
 from quandl_key import api_key
+# %autosave 0
 ```
 
 ```{python}
@@ -60,9 +61,5 @@ pf.create_returns_tear_sheet(rate_stock_rets, live_start_date='2015-01-02')
 ```
 
 ```{python}
-
-```
-
-```{python}
-
+j
 ```
